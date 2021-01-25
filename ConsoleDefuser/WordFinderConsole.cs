@@ -1,5 +1,4 @@
 using System.Linq;
-using BombDefuser.Interaction;
 using System;
 
 namespace BombDefuser.ConsoleUI
