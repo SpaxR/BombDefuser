@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
-		<AssemblyName>Shared</AssemblyName>
+		<RootNamespace>BombDefuser.ConsoleUI</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Update="words.txt">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+	  <ProjectReference Include="..\BombDefuser\BombDefuser.csproj" />
 	</ItemGroup>
 
 </Project>
