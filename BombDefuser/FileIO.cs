@@ -7,7 +7,7 @@ namespace BombDefuser
 	{
 		public bool DoesFileExist(string path)
 		{
-			return !string.IsNullOrWhiteSpace(path) && File.Exists(path);
+			return File.Exists(path);
 		}
 
 		public string[] LoadWordFinderFile(string path)

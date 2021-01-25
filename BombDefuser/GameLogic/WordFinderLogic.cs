@@ -1,38 +1,31 @@
 using System.Linq;
-using BombDefuser.Interaction;
 
 namespace BombDefuser.GameLogic
 {
 	public class WordFinderLogic : GameLogicBase<IWordFinderInteraction>
 	{
-		private readonly IWordFinderInteraction _interaction;
-		private readonly string[]               _words;
+		private readonly string _wordsFile;
 
 		public WordFinderLogic(string[] args, IWordFinderInteraction interaction, FileIO io)
 			: base(args, interaction, io)
 		{
-			_interaction = interaction;
-
-			string filePath = args.FirstOrDefault() ?? "words.txt";
-			_words = io.DoesFileExist(filePath) ? io.LoadWordFinderFile(filePath) : DefaultValues.WordFinderWords;
+			_wordsFile = args.FirstOrDefault() ?? "words.txt";
 		}
 
 		public override void MainLoop()
 		{
-			string[] filteredWords = _words;
+			string[] words = IO.DoesFileExist(_wordsFile)
+				? IO.LoadWordFinderFile(_wordsFile)
+				: DefaultValues.WordFinderWords;
 
-			for (int i = 0; i < 5 && filteredWords.Length > 1; i++)
+
+			for (int i = 0; words.Length > 1; i++)
 			{
-				string letters = _interaction.ReadLetters(i);
-				_interaction.Reset();
-				filteredWords = FilterWords(filteredWords, letters, i);
-				_interaction.DisplayWordStats(filteredWords);
+				string letters = UserInteraction.ReadLetters(i);
+				UserInteraction.Reset();
+				words = words.Where(word => letters.Contains(word[i])).ToArray();
+				UserInteraction.DisplayWordStats(words);
 			}
-		}
-
-		private string[] FilterWords(string[] words, string letters, int index)
-		{
-			return words.Where(word => letters.Contains(word[index])).ToArray();
 		}
 	}
 }

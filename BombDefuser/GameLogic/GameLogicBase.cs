@@ -1,5 +1,9 @@
+using System;
+
 namespace BombDefuser.GameLogic
 {
+	
+	// TODO Unit-Test
 	public abstract class GameLogicBase<TInteraction> : IGameLogic
 	{
 		protected TInteraction UserInteraction { get; }
@@ -7,8 +11,8 @@ namespace BombDefuser.GameLogic
 
 		public GameLogicBase(string[] args, TInteraction interaction, FileIO io)
 		{
-			UserInteraction = interaction;
-			IO              = io;
+			UserInteraction = interaction ?? throw new ArgumentException("Missing Parameter", nameof(interaction));
+			IO              = io          ?? throw new ArgumentException("Missing Parameter", nameof(io));
 		}
 
 		/// <inheritdoc />

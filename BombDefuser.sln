@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDefuser", "ConsoleDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowDefuser", "WindowDefuser\WindowDefuser.csproj", "{1C7F62D4-6BC7-4469-A90E-3C754E950A7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombDefuser.Tests", "BombDefuser.Tests\BombDefuser.Tests.csproj", "{3FB1015D-449E-4478-A7E4-F033BD5B1E49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1C7F62D4-6BC7-4469-A90E-3C754E950A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7F62D4-6BC7-4469-A90E-3C754E950A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7F62D4-6BC7-4469-A90E-3C754E950A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB1015D-449E-4478-A7E4-F033BD5B1E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB1015D-449E-4478-A7E4-F033BD5B1E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB1015D-449E-4478-A7E4-F033BD5B1E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB1015D-449E-4478-A7E4-F033BD5B1E49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
