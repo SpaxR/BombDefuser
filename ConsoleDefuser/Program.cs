@@ -1,5 +1,4 @@
-﻿using BombDefuser.FileAccess;
-using BombDefuser.GameLogic;
+﻿using BombDefuser.GameLogic;
 
 namespace BombDefuser.ConsoleUI
 {
@@ -9,8 +8,7 @@ namespace BombDefuser.ConsoleUI
 		{
 			// Initialise Game-Solver
 			var interaction = new WordFinderConsole();
-			var io          = new WordFinderIO();
-			var gamelogic   = new WordFinderLogic(args, interaction, io);
+			var gamelogic   = new WordFinderLogic(args, interaction);
 
 			// Interaction-Loop
 			interaction.DisplayWelcomeMessage();

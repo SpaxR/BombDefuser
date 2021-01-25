@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace BombDefuser.FileAccess
 {
-	public class WordFinderIO
+	public static class DataAccess
 	{
-		public string[] LoadWords(string path)
+		public static string[] WordFinderWords(string path)
 		{
 			if (File.Exists(path))
 			{

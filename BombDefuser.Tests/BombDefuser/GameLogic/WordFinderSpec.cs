@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using BombDefuser.FileAccess;
 using BombDefuser.GameLogic;
 using Moq;
 using Xunit;
@@ -12,14 +11,13 @@ namespace BombDefuser.Tests
 	{
 		private readonly WordFinderLogic              _sut;
 		private readonly Mock<IWordFinderInteraction> _interactionMock = new Mock<IWordFinderInteraction>();
-		private readonly Mock<WordFinderIO>           _fileMock        = new Mock<WordFinderIO>();
 		private const    string                       WordsFile        = "words.txt";
 
 
 		public WordFinderSpec()
 		{
 			File.WriteAllText(WordsFile, string.Join(',', DefaultValues.WordFinderWords));
-			_sut = new WordFinderLogic(new[] {WordsFile}, _interactionMock.Object, _fileMock.Object);
+			_sut = new WordFinderLogic(new[] {WordsFile}, _interactionMock.Object);
 		}
 
 		[Fact]
