@@ -3,24 +3,8 @@ using System.Linq;
 
 namespace BombDefuser.ConsoleUI
 {
-	public class WordFinderConsole : IWordFinderInteraction
+	public class WordFinderConsole : BasicInteraction, IWordFinderInteraction
 	{
-		public void Reset()
-			=> Console.Clear();
-
-		public void DisplayGoodbyeMessage()
-			=> Console.WriteLine("kthxbye");
-
-		public void DisplayWelcomeMessage()
-			=> Console.WriteLine("Module-Solver for -- Keep Talking and Nobody Explodes --");
-
-		public bool AskToContinue()
-		{
-			Console.Write("Do it Again? y/n [y]");
-			string input = Console.ReadLine()?.ToLower() ?? string.Empty;
-			return string.IsNullOrWhiteSpace(input) || input.StartsWith("y");
-		}
-
 		public string ReadLetters(int index)
 		{
 			string column = index switch
@@ -45,20 +29,28 @@ namespace BombDefuser.ConsoleUI
 			switch (words.Length)
 			{
 				case 0:
-					Console.WriteLine("Not Matches Found !!!");
+					WriteColoredLine("Not Matches Found !!!", ConsoleColor.Red);
 					return;
 				case 1:
 					Console.WriteLine("!!! Found Match !!!");
-					Console.WriteLine("--- " + words.Single() + " ---");
+					WriteColoredLine("--- " + words.Single() + " ---", ConsoleColor.Yellow);
 					return;
 				default:
 					Console.WriteLine(words.Length + " words matching");
 					Console.WriteLine(" - - - - - ");
+
+					int breakCounter = 0;
 					foreach (string word in words)
 					{
-						Console.WriteLine(" - " + word);
+						Console.Write(word + " ");
+						if (++breakCounter % 5 == 0)
+						{
+							Console.WriteLine();
+							breakCounter = 0;
+						}
 					}
 
+					if (breakCounter > 0) Console.WriteLine();
 					Console.WriteLine(" - - - - - ");
 					break;
 			}

@@ -3,7 +3,7 @@ using System;
 namespace BombDefuser.GameLogic
 {
 	// TODO Unit-Test
-	public abstract class GameLogicBase<TInteraction> : IGameLogic
+	public abstract class GameLogicBase<TInteraction> : IGameLogic where TInteraction : IInteraction
 	{
 		protected TInteraction UserInteraction { get; }
 

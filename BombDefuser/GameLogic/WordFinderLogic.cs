@@ -17,7 +17,9 @@ namespace BombDefuser.GameLogic
 		public override void MainLoop()
 		{
 			string[] words = DataAccess.WordFinderWords(_wordsFile);
-			
+
+			UserInteraction.DisplayWordStats(words);
+
 			for (int i = 0; words.Length > 1; i++)
 			{
 				string letters = UserInteraction.ReadLetters(i);
