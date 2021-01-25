@@ -6,7 +6,7 @@ namespace BombDefuser.GameLogic
 	public class WordFinderLogic : GameLogicBase
 	{
 		private readonly WordFinderConsole _interaction;
-		private          string[]          _words;
+		private readonly string[]          _words;
 
 		public WordFinderLogic(string[] args, WordFinderConsole interaction, FileIO io) : base(args, interaction, io)
 		{
@@ -18,12 +18,14 @@ namespace BombDefuser.GameLogic
 
 		public override void MainLoop()
 		{
-			for (int i = 0; i < 5 && _words.Length > 1; i++)
+			string[] filteredWords = _words;
+
+			for (int i = 0; i < 5 && filteredWords.Length > 1; i++)
 			{
 				string letters = _interaction.ReadLetters(i);
 				_interaction.Reset();
-				_words = FilterWords(_words, letters, i);
-				_interaction.DisplayWordStats(_words);
+				filteredWords = FilterWords(filteredWords, letters, i);
+				_interaction.DisplayWordStats(filteredWords);
 			}
 		}
 

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 
 namespace BombDefuser
 {
@@ -11,8 +12,10 @@ namespace BombDefuser
 
 		public string[] LoadWordFinderFile(string path)
 		{
-			File.ReadAllText(path);
-			return null;
+			return File.ReadAllText(path)
+					   .Split(' ', ',', '\n')
+					   .Where(s => !string.IsNullOrWhiteSpace(s))
+					   .ToArray();
 		}
 	}
 }

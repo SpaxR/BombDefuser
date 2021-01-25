@@ -30,7 +30,8 @@ namespace BombDefuser.Interaction
 					Console.WriteLine("Not Matches Found !!!");
 					return;
 				case 1:
-					Console.WriteLine("Found Match: " + words.Single());
+					Console.WriteLine("!!! Found Match !!!");
+					Console.WriteLine(words.Single());
 					return;
 				default:
 					Console.WriteLine(words.Length + " words matching");
