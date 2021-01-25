@@ -4,11 +4,10 @@ namespace BombDefuser.Tests.Fakes
 {
 	public class GameLogicBaseFake : GameLogicBase<IInteraction>
 	{
-		public IInteraction ProtectedUserInteraction => base.UserInteraction;
-		public FileIO       ProtectedIO              => base.IO;
+		public IInteraction ProtectedUserInteraction => UserInteraction;
 
 		/// <inheritdoc />
-		public GameLogicBaseFake(IInteraction interaction, FileIO io) : base(interaction, io) { }
+		public GameLogicBaseFake(IInteraction interaction) : base(interaction) { }
 
 		/// <inheritdoc />
 		public override void MainLoop() { }

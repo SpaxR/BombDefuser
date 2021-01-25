@@ -7,11 +7,8 @@ namespace BombDefuser.ConsoleUI
 		static void Main(string[] args)
 		{
 			// Initialise Game-Solver
-			var io          = new FileIO();
 			var interaction = new WordFinderConsole();
-
-			// Load Logic
-			IGameLogic gamelogic = new WordFinderLogic(args, interaction, io);
+			var gamelogic   = new WordFinderLogic(args, interaction);
 
 			// Interaction-Loop
 			interaction.DisplayWelcomeMessage();

@@ -1,10 +1,26 @@
-using System.Linq;
 using System;
+using System.Linq;
 
 namespace BombDefuser.ConsoleUI
 {
-	public class WordFinderConsole : ConsoleInteractionBase, IWordFinderInteraction
+	public class WordFinderConsole : IWordFinderInteraction
 	{
+		public void Reset()
+			=> Console.Clear();
+
+		public void DisplayGoodbyeMessage()
+			=> Console.WriteLine("kthxbye");
+
+		public void DisplayWelcomeMessage()
+			=> Console.WriteLine("Module-Solver for -- Keep Talking and Nobody Explodes --");
+
+		public bool AskToContinue()
+		{
+			Console.Write("Do it Again? y/n [y]");
+			string input = Console.ReadLine()?.ToLower() ?? string.Empty;
+			return string.IsNullOrWhiteSpace(input) || input.StartsWith("y");
+		}
+
 		public string ReadLetters(int index)
 		{
 			string column = index switch
@@ -19,7 +35,9 @@ namespace BombDefuser.ConsoleUI
 			};
 
 			Console.Write($"Input {column} letters:");
-			return Console.ReadLine()?.TrimEnd('\r') ?? string.Empty;
+			string result = Console.ReadLine()?.TrimEnd('\r') ?? string.Empty;
+			Console.Clear();
+			return result;
 		}
 
 		public void DisplayWordStats(string[] words)

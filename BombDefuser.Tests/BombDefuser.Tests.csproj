@@ -18,4 +18,8 @@
 	  <ProjectReference Include="..\BombDefuser\BombDefuser.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="BombDefuser.Tests.csproj.DotSettings" />
+	</ItemGroup>
+
 </Project>
