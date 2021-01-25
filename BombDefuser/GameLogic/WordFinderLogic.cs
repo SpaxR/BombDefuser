@@ -5,10 +5,11 @@ namespace BombDefuser.GameLogic
 {
 	public class WordFinderLogic : GameLogicBase
 	{
-		private readonly WordFinderConsole _interaction;
-		private readonly string[]          _words;
+		private readonly IWordFinderInteraction _interaction;
+		private readonly string[]               _words;
 
-		public WordFinderLogic(string[] args, WordFinderConsole interaction, FileIO io) : base(args, interaction, io)
+		public WordFinderLogic(string[] args, IWordFinderInteraction interaction, FileIO io)
+			: base(args, interaction, io)
 		{
 			_interaction = interaction;
 

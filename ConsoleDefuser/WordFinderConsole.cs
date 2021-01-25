@@ -1,9 +1,10 @@
-using System;
 using System.Linq;
+using BombDefuser.Interaction;
+using System;
 
-namespace BombDefuser.Interaction
+namespace BombDefuser.ConsoleUI
 {
-	public class WordFinderConsole : ConsoleInteraction
+	public class WordFinderConsole : ConsoleInteractionBase, IWordFinderInteraction
 	{
 		public string ReadLetters(int index)
 		{
@@ -19,7 +20,7 @@ namespace BombDefuser.Interaction
 			};
 
 			Console.Write($"Input {column} letter:");
-			return Console.ReadLine();
+			return Console.ReadLine()?.TrimEnd('\r');
 		}
 
 		public void DisplayWordStats(string[] words)
@@ -31,7 +32,7 @@ namespace BombDefuser.Interaction
 					return;
 				case 1:
 					Console.WriteLine("!!! Found Match !!!");
-					Console.WriteLine(words.Single());
+					Console.WriteLine("--- " + words.Single() + " ---");
 					return;
 				default:
 					Console.WriteLine(words.Length + " words matching");
