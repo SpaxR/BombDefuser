@@ -1,4 +1,4 @@
-namespace BombDefuser.Interaction
+namespace BombDefuser
 {
 	public interface IWordFinderInteraction : IInteraction
 	{

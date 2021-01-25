@@ -3,7 +3,7 @@ using BombDefuser.Interaction;
 
 namespace BombDefuser.GameLogic
 {
-	public class WordFinderLogic : GameLogicBase
+	public class WordFinderLogic : GameLogicBase<IWordFinderInteraction>
 	{
 		private readonly IWordFinderInteraction _interaction;
 		private readonly string[]               _words;

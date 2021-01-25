@@ -1,11 +1,11 @@
 namespace BombDefuser.GameLogic
 {
-	public abstract class GameLogicBase : IGameLogic
+	public abstract class GameLogicBase<TInteraction> : IGameLogic
 	{
-		public IInteraction UserInteraction { get; }
-		public FileIO       IO              { get; }
+		protected TInteraction UserInteraction { get; }
+		protected FileIO       IO              { get; }
 
-		public GameLogicBase(string[] args, IInteraction interaction, FileIO io)
+		public GameLogicBase(string[] args, TInteraction interaction, FileIO io)
 		{
 			UserInteraction = interaction;
 			IO              = io;
