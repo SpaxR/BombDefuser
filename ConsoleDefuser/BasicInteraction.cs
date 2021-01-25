@@ -20,6 +20,12 @@ namespace BombDefuser.ConsoleUI
 			Console.ResetColor();
 		}
 
+		/// <inheritdoc />
+		public void DisplayErrorMessage(string userError)
+		{
+			WriteColoredLine(userError, ConsoleColor.Red);
+		}
+
 		public void Reset()
 			=> Console.Clear();
 

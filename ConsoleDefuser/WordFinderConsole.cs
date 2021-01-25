@@ -29,11 +29,11 @@ namespace BombDefuser.ConsoleUI
 			switch (words.Length)
 			{
 				case 0:
-					Console.WriteLine("Not Matches Found !!!");
+					WriteColoredLine("Not Matches Found !!!", ConsoleColor.Red);
 					return;
 				case 1:
 					Console.WriteLine("!!! Found Match !!!");
-					Console.WriteLine("--- " + words.Single() + " ---");
+					WriteColoredLine("--- " + words.Single() + " ---", ConsoleColor.Yellow);
 					return;
 				default:
 					Console.WriteLine(words.Length + " words matching");

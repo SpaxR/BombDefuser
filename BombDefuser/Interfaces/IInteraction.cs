@@ -6,6 +6,8 @@ namespace BombDefuser
 		void DisplayWelcomeMessage();
 		void DisplayGoodbyeMessage();
 
+		void DisplayErrorMessage(string userError);
+		
 		/// <summary> Asks the User how to continue </summary>
 		/// <param name="previousModule">number of the previously used Module (default to zero (menu))</param>
 		/// <returns>

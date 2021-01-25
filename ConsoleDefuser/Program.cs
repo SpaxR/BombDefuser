@@ -23,22 +23,24 @@ namespace BombDefuser.ConsoleUI
 						menuChoice = interaction.AskForSolverModule();
 						break;
 					case > 0:
-						interaction.Reset();
 						LoadModule(menuChoice, args).MainLoop();
 						menuChoice = interaction.AskToContinue(menuChoice);
 						break;
 				}
+
+				interaction.Reset();
 			} while (menuChoice >= 0);
 
 
 			// Exit Application
-			interaction.Reset();
 			interaction.DisplayGoodbyeMessage();
 		}
 
 		private static IGameLogic LoadModule(int num, IEnumerable<string> args)
 		{
-			return new WordFinderLogic(args, new WordFinderConsole());
+			return num == 11
+				? new WordFinderLogic(args, new WordFinderConsole())
+				: new NoopLogic(new BasicInteraction());
 		}
 	}
 }
