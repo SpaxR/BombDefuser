@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace WordFinder
+namespace BombDefuser.Interaction
 {
 	public class WordFinderConsole : ConsoleInteraction
 	{

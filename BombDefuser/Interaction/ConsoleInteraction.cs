@@ -1,6 +1,6 @@
 using System;
 
-namespace WordFinder
+namespace BombDefuser.Interaction
 {
 	public class ConsoleInteraction : IInteraction
 	{

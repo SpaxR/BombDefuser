@@ -1,8 +1,8 @@
-namespace WordFinder
+namespace BombDefuser
 {
-	public class DefaultValues
+	// German Version
+	public static class DefaultValues
 	{
-		// German Version
 		public static readonly string[] WordFinderWords =
 		{
 			"angst", "atmen", "beten", "bombe", "danke",

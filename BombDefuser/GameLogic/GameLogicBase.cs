@@ -1,4 +1,4 @@
-namespace WordFinder
+namespace BombDefuser.GameLogic
 {
 	public abstract class GameLogicBase : IGameLogic
 	{

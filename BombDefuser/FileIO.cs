@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace WordFinder
+namespace BombDefuser
 {
 	public class FileIO
 	{

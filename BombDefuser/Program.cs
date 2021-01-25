@@ -1,4 +1,7 @@
-﻿namespace WordFinder
+﻿using BombDefuser.GameLogic;
+using BombDefuser.Interaction;
+
+namespace BombDefuser
 {
 	class Program
 	{

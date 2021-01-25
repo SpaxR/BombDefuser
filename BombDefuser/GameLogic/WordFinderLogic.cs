@@ -1,6 +1,7 @@
 using System.Linq;
+using BombDefuser.Interaction;
 
-namespace WordFinder
+namespace BombDefuser.GameLogic
 {
 	public class WordFinderLogic : GameLogicBase
 	{
