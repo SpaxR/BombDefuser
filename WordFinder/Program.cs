@@ -1,28 +1,20 @@
-﻿using System;
-
-namespace WordFinder
+﻿namespace WordFinder
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			// TODO Load Word-File
-
 			var interaction = new Interaction();
-
+			var gamelogic   = new WordFinderLogic();
 			interaction.WriteInitialMessage();
 
-			while (interaction.AskToContinue())
+			do
 			{
-				string letters = interaction.ReadLetters(0);
-				// Read Letters
-				// Display Stats
-				// -- Repeat until Result found
+				interaction.ClearScreen();
+				gamelogic.MainLoop(interaction);
+			} while (interaction.AskToContinue());
 
-				Console.WriteLine("Not implemented yet!");
-			}
-
-
+			interaction.ClearScreen();
 			interaction.WriteGoodbyeMessage();
 		}
 	}
