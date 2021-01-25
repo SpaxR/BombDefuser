@@ -1,25 +1,10 @@
 using System;
 using System.Linq;
 
-namespace WordFinder
+namespace BombDefuser.Interaction
 {
-	public class Interaction
+	public class WordFinderConsole : ConsoleInteraction
 	{
-		public void ClearScreen()
-		{
-			Console.Clear();
-		}
-
-		public void WriteInitialMessage()
-		{
-			Console.WriteLine("Word-Finder for -- Keep Talking and Nobody Explodes --");
-		}
-
-		public void WriteGoodbyeMessage()
-		{
-			Console.WriteLine("kthxbye");
-		}
-
 		public string ReadLetters(int index)
 		{
 			string column = index switch
@@ -35,14 +20,6 @@ namespace WordFinder
 
 			Console.Write($"Input {column} letter:");
 			return Console.ReadLine();
-		}
-
-
-		public bool AskToContinue()
-		{
-			Console.Write("Do it Again? y/n [y]");
-			string input = Console.ReadLine()?.ToLower();
-			return string.IsNullOrWhiteSpace(input) || input.StartsWith("y");
 		}
 
 		public void DisplayWordStats(string[] words)

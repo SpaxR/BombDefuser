@@ -1,14 +1,14 @@
-using System.Collections.Generic;
 using System.Linq;
+using BombDefuser.Interaction;
 
-namespace WordFinder
+namespace BombDefuser.GameLogic
 {
-	public class WordFinderLogic
+	public class WordFinderLogic : GameLogicBase
 	{
-		private readonly Interaction _interaction;
-		private          string[]    _words;
+		private readonly WordFinderConsole _interaction;
+		private          string[]          _words;
 
-		public WordFinderLogic(IEnumerable<string> args, Interaction interaction, FileIO io)
+		public WordFinderLogic(string[] args, WordFinderConsole interaction, FileIO io) : base(args, interaction, io)
 		{
 			_interaction = interaction;
 
@@ -16,12 +16,12 @@ namespace WordFinder
 			_words = io.DoesFileExist(filePath) ? io.LoadWordFinderFile(filePath) : DefaultValues.WordFinderWords;
 		}
 
-		public void MainLoop()
+		public override void MainLoop()
 		{
 			for (int i = 0; i < 5 && _words.Length > 1; i++)
 			{
 				string letters = _interaction.ReadLetters(i);
-				_interaction.ClearScreen();
+				_interaction.Reset();
 				_words = FilterWords(_words, letters, i);
 				_interaction.DisplayWordStats(_words);
 			}
