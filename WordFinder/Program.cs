@@ -6,22 +6,22 @@
 		{
 			// Initialise Game-Solver
 			var io          = new FileIO();
-			var interaction = new Interaction();
+			var interaction = new ConsoleInteraction();
 
 			// Load Logic
-			var gamelogic = new WordFinderLogic(args, interaction, io);
+			IGameLogic gamelogic = new WordFinderLogic(args, new WordFinderConsole(), io);
 
 			// Interaction-Loop
-			interaction.WriteInitialMessage();
+			interaction.DisplayWelcomeMessage();
 			do
 			{
-				interaction.ClearScreen();
+				interaction.Reset();
 				gamelogic.MainLoop();
 			} while (interaction.AskToContinue());
 
 			// Exit Application
-			interaction.ClearScreen();
-			interaction.WriteGoodbyeMessage();
+			interaction.Reset();
+			interaction.DisplayGoodbyeMessage();
 		}
 	}
 }
