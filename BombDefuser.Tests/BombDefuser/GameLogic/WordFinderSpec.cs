@@ -1,17 +1,18 @@
 using System;
 using System.IO;
 using System.Linq;
+using BombDefuser.FileAccess;
 using BombDefuser.GameLogic;
 using Moq;
 using Xunit;
 
-namespace BombDefuser.Tests.GameLogic
+namespace BombDefuser.Tests
 {
 	public class WordFinderSpec
 	{
 		private readonly WordFinderLogic              _sut;
 		private readonly Mock<IWordFinderInteraction> _interactionMock = new Mock<IWordFinderInteraction>();
-		private readonly Mock<FileIO>                 _fileMock        = new Mock<FileIO>();
+		private readonly Mock<WordFinderIO>           _fileMock        = new Mock<WordFinderIO>();
 		private const    string                       WordsFile        = "words.txt";
 
 
@@ -65,17 +66,6 @@ namespace BombDefuser.Tests.GameLogic
 			_interactionMock.Verify(interaction => interaction.ReadLetters(0), Times.Once);
 			_interactionMock.Verify(interaction => interaction.ReadLetters(1), Times.Once);
 		}
-		
-		[Fact]
-		public void MainLoop_clears_display_after_read()
-		{
-			_interactionMock.Setup(interaction => interaction.ReadLetters(0)).Returns("a");
-			_interactionMock.Setup(interaction => interaction.ReadLetters(1)).Returns("n");
-
-			_sut.MainLoop();
-
-			_interactionMock.Verify(interaction => interaction.Reset(), Times.Exactly(2));
-		}
 
 		[Fact]
 		public void MainLoop_reads_until_one_match_is_found()
@@ -111,7 +101,5 @@ namespace BombDefuser.Tests.GameLogic
 
 			_interactionMock.Verify(interaction => interaction.DisplayWordStats(It.IsAny<string[]>()), Times.AtMost(5));
 		}
-		
-		
 	}
 }
