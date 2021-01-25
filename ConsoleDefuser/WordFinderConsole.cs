@@ -3,24 +3,8 @@ using System.Linq;
 
 namespace BombDefuser.ConsoleUI
 {
-	public class WordFinderConsole : IWordFinderInteraction
+	public class WordFinderConsole : BasicInteraction, IWordFinderInteraction
 	{
-		public void Reset()
-			=> Console.Clear();
-
-		public void DisplayGoodbyeMessage()
-			=> Console.WriteLine("kthxbye");
-
-		public void DisplayWelcomeMessage()
-			=> Console.WriteLine("Module-Solver for -- Keep Talking and Nobody Explodes --");
-
-		public bool AskToContinue()
-		{
-			Console.Write("Do it Again? y/n [y]");
-			string input = Console.ReadLine()?.ToLower() ?? string.Empty;
-			return string.IsNullOrWhiteSpace(input) || input.StartsWith("y");
-		}
-
 		public string ReadLetters(int index)
 		{
 			string column = index switch
