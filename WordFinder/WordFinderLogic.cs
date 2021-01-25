@@ -1,30 +1,33 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WordFinder
 {
 	public class WordFinderLogic
 	{
-		private static readonly string[] BaseWords = {"abc", "def", "abf", "asd"};
+		private readonly Interaction _interaction;
+		private          string[]    _words;
 
-		public WordFinderLogic()
+		public WordFinderLogic(IEnumerable<string> args, Interaction interaction, FileIO io)
 		{
-			// TODO Load Word-File
+			_interaction = interaction;
+
+			string filePath = args.FirstOrDefault() ?? "words.txt";
+			_words = io.DoesFileExist(filePath) ? io.LoadWordFinderFile(filePath) : DefaultValues.WordFinderWords;
 		}
 
-		public void MainLoop(Interaction interaction)
+		public void MainLoop()
 		{
-			string[] filteredWords = BaseWords;
-
-			for (int i = 0; i < 5 && filteredWords.Length > 1; i++)
+			for (int i = 0; i < 5 && _words.Length > 1; i++)
 			{
-				string letters = interaction.ReadLetters(i);
-				interaction.ClearScreen();
-				filteredWords = FilterWords(filteredWords, letters, i);
-				interaction.DisplayWordStats(filteredWords);
+				string letters = _interaction.ReadLetters(i);
+				_interaction.ClearScreen();
+				_words = FilterWords(_words, letters, i);
+				_interaction.DisplayWordStats(_words);
 			}
 		}
 
-		public string[] FilterWords(string[] words, string letters, int index)
+		private string[] FilterWords(string[] words, string letters, int index)
 		{
 			return words.Where(word => letters.Contains(word[index])).ToArray();
 		}
