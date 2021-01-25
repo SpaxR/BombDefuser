@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BombDefuser.GameLogic
@@ -6,10 +7,10 @@ namespace BombDefuser.GameLogic
 	{
 		private readonly string _wordsFile;
 
-		public WordFinderLogic(string[] args, IWordFinderInteraction interaction, FileIO io)
-			: base(args, interaction, io)
+		public WordFinderLogic(IEnumerable<string> args, IWordFinderInteraction interaction, FileIO io)
+			: base(interaction, io)
 		{
-			_wordsFile = args.FirstOrDefault() ?? "words.txt";
+			_wordsFile = args?.FirstOrDefault() ?? "words.txt";
 		}
 
 		public override void MainLoop()
