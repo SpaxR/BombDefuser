@@ -16,7 +16,7 @@ namespace BombDefuser.ConsoleUI
 		public bool AskToContinue()
 		{
 			Console.Write("Do it Again? y/n [y]");
-			string input = Console.ReadLine()?.ToLower();
+			string input = Console.ReadLine()?.ToLower() ?? string.Empty;
 			return string.IsNullOrWhiteSpace(input) || input.StartsWith("y");
 		}
 	}

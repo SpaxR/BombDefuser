@@ -7,6 +7,8 @@
 		<RootNamespace>BombDefuser.GUI</RootNamespace>
 		<PublishSingleFile>true</PublishSingleFile>
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<Nullable>enable</Nullable>
+		<LangVersion>default</LangVersion>
 	</PropertyGroup>
 	
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

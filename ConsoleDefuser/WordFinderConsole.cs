@@ -20,7 +20,7 @@ namespace BombDefuser.ConsoleUI
 			};
 
 			Console.Write($"Input {column} letters:");
-			return Console.ReadLine()?.TrimEnd('\r');
+			return Console.ReadLine()?.TrimEnd('\r') ?? string.Empty;
 		}
 
 		public void DisplayWordStats(string[] words)
