@@ -19,7 +19,7 @@ namespace BombDefuser.ConsoleUI
 				_ => "unknown"
 			};
 
-			Console.Write($"Input {column} letter:");
+			Console.Write($"Input {column} letters:");
 			return Console.ReadLine()?.TrimEnd('\r');
 		}
 
