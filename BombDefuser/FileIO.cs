@@ -13,6 +13,7 @@ namespace BombDefuser
 		public string[] LoadWordFinderFile(string path)
 		{
 			return File.ReadAllText(path)
+					   .Replace("\r", "") // Windows-Enter uses \r\n
 					   .Split(' ', ',', '\n')
 					   .Where(s => !string.IsNullOrWhiteSpace(s))
 					   .ToArray();
