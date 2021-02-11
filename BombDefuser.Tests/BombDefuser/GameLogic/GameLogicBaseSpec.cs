@@ -9,19 +9,22 @@ namespace BombDefuser.Tests
 	{
 		private readonly Mock<IInteraction> _interactionMock = new Mock<IInteraction>();
 
-		[Fact]
-		public void Constructor_sets_properties()
+		public class Constructor : GameLogicBaseSpec
 		{
-			var sut = new GameLogicBaseFake(_interactionMock.Object);
+			[Fact]
+			public void Constructor_sets_properties()
+			{
+				var sut = new GameLogicBaseFake(_interactionMock.Object);
 
-			Assert.Equal(_interactionMock.Object, sut.ProtectedUserInteraction);
-		}
+				Assert.Equal(_interactionMock.Object, sut.ProtectedUserInteraction);
+			}
 
 
-		[Fact]
-		public void Missing_interaction_throws_exception()
-		{
-			Assert.Throws<ArgumentException>(() => new GameLogicBaseFake(null));
+			[Fact]
+			public void Missing_interaction_throws_exception()
+			{
+				Assert.Throws<ArgumentException>(() => new GameLogicBaseFake(null));
+			}
 		}
 	}
 }
