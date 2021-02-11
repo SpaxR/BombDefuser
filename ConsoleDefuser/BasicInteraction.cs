@@ -30,7 +30,10 @@ namespace BombDefuser.ConsoleUI
 			=> Console.Clear();
 
 		public void DisplayGoodbyeMessage()
-			=> Console.WriteLine("kthxbye");
+		{
+			Console.WriteLine("kthxbye");
+			Console.ReadKey();
+		}
 
 		public void DisplayWelcomeMessage()
 		{
