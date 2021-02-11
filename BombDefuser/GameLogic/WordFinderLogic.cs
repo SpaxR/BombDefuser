@@ -4,16 +4,21 @@ using BombDefuser.FileAccess;
 
 namespace BombDefuser.GameLogic
 {
+	/// <summary>Logic to solve Module 11</summary>
 	public class WordFinderLogic : GameLogicBase<IWordFinderInteraction>
 	{
 		private readonly string _wordsFile;
 
-		public WordFinderLogic(IEnumerable<string> args, IWordFinderInteraction interaction)
+		/// <inheritdoc/>
+		/// <param name="words">List of possible Words</param>
+		/// <param name="interaction"><see cref="IWordFinderInteraction"/></param>
+		public WordFinderLogic(IEnumerable<string> words, IWordFinderInteraction interaction)
 			: base(interaction)
 		{
-			_wordsFile = args.FirstOrDefault() ?? "words.txt";
+			_wordsFile = words.FirstOrDefault() ?? "words.txt";
 		}
 
+		/// <inheritdoc/>
 		public override void MainLoop()
 		{
 			string[] words = DataAccess.WordFinderWords(_wordsFile);
